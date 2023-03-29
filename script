@@ -1,0 +1,59 @@
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+local Window = Library.CreateLib("Kito's hub", "Synapse")
+
+
+local Car = Window:NewTab("Car tab")
+local CarSection = Car:NewSection("Car settings")
+
+
+local Human = Window:NewTab("Human tab")
+local HumanSection = Human:NewSection("Human settings")
+
+
+local Settings = Window:NewTab("Settings")
+local SettingsSection = Settings:NewSection("Settings")
+
+
+CarSection:NewToggle("SuperSpeed", "...", function(state)
+    if state then
+        local config = require(game:GetService("Workspace").CarCollection[game:GetService("Players").LocalPlayer.Name]:FindFirstChild("Car").Body.Configuration)
+        config.Horsepower = 9999999999999
+        config.Acceleration = 9999999999999
+        config.TopSpeed = 9999999999999
+    else
+        local config = require(game:GetService("Workspace").CarCollection[game:GetService("Players").LocalPlayer.Name]:FindFirstChild("Car").Body.Configuration)
+        config.Horsepower = 5000
+        config.Acceleration = 35
+        config.TopSpeed = 700
+    end
+end)
+
+
+
+HumanSection:NewToggle("SuperSpeed", "...", function(state)
+    if state then
+        game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 100
+    else
+        game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 16
+    end
+end)
+
+
+CarSection:NewToggle("Better brakes", "...", function(state)
+    if state then
+        local config = require(game:GetService("Workspace").CarCollection[game:GetService("Players").LocalPlayer.Name]:FindFirstChild("Car").Body.Configuration)
+        config.BrakeForce = 99999
+    else
+        local config = require(game:GetService("Workspace").CarCollection[game:GetService("Players").LocalPlayer.Name]:FindFirstChild("Car").Body.Configuration)
+        config.BrakeForce = 40
+    end
+end)
+
+
+SettingsSection:NewKeybind("GUI", "KeybindInfo", Enum.KeyCode.N, function()
+	Library:ToggleUI()
+end)
+
+
+
+
