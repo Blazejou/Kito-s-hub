@@ -42,7 +42,7 @@ end)
 CarSection:NewToggle("Better brakes", "...", function(state)
     if state then
         local config = require(game:GetService("Workspace").CarCollection[game:GetService("Players").LocalPlayer.Name]:FindFirstChild("Car").Body.Configuration)
-        config.BrakeForce = 555555
+        config.BrakeForce = 11000
     else
         local config = require(game:GetService("Workspace").CarCollection[game:GetService("Players").LocalPlayer.Name]:FindFirstChild("Car").Body.Configuration)
         config.BrakeForce = 40
